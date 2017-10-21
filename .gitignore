@@ -2,3 +2,4 @@
 squareconsole.iml 
 out/ 
 *.class 
+*.iml 
