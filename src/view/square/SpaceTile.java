@@ -1,5 +1,6 @@
 package view.square;
 
+import isel.leic.pg.Console;
 import model.square.Square;
 
 public class SpaceTile extends SquareTile {
@@ -8,7 +9,10 @@ public class SpaceTile extends SquareTile {
     }
 
     @Override
-    public void paint() {paintByStrings("","<->","" );
-
+    public void paint() {paintByStrings("   ","<->","   " );
+    }
+    @Override
+    int getColor() {
+        return Console.GRAY;
     }
 }

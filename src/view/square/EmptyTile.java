@@ -1,5 +1,6 @@
 package view.square;
 
+import isel.leic.pg.Console;
 import model.square.Square;
 
 public class EmptyTile extends SquareTile {
@@ -10,5 +11,10 @@ public class EmptyTile extends SquareTile {
     @Override
     public void paint() {paintByStrings("","","" );
 
+    }
+
+    @Override
+    int getColor() {
+        return Console.BLACK;
     }
 }

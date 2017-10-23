@@ -30,8 +30,10 @@ public class ColorSquare extends Square {
     @Override
     public boolean touch(int line, int col) {
         model.destroySquare(this, line, col);
+        System.out.println(getColor());
         return true;
     }
+
 
     //TODO
 

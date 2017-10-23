@@ -46,8 +46,10 @@ public abstract class SquareTile extends Tile {
         if (square instanceof SpaceSquare) return new SpaceTile(square);
         if (square instanceof LineSquare) return new LineTile(square);
         if (square instanceof BombSquare) return new BombTile(square);
+        if (square instanceof ColorSquare) return new ColorTile(square);
         if (square instanceof EmptySquare) return new EmptyTile(square);
-        return new ColorTile(square);
+        return null;
+
     }
 
     void paintByStrings(String... lines) {

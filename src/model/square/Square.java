@@ -28,10 +28,6 @@ public abstract class Square {
         if(type=='H') return new LineSquare(type);
         if(type=='B') return new BombSquare(type);
         if(type=='X') return new EmptySquare(type);
-/*
-        if(type=='X') return Console.DARK_GRAY;
-*/
-
         return new ColorSquare(type);
     }
 }
