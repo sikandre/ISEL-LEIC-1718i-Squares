@@ -10,5 +10,7 @@ public class ColorTile extends SquareTile {
     }
 
     @Override
-    public void paint() { paintByStrings(CHARS /*"+-+","| |","+-+"*/ ); }
+    public void paint() {
+        paintByStrings(CHARS);
+    }
 }
