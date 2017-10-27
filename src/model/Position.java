@@ -1,10 +1,6 @@
 package model;
 
 
-
-/**
- * Created by fabio on 10/16/2017.
- */
 public class Position {
 
     public final int line;
@@ -14,4 +10,5 @@ public class Position {
         this.line = lin;
         this.col = col;
     }
+
 }

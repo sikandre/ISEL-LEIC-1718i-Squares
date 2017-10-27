@@ -1,6 +1,5 @@
 package view.square;
 
-import isel.leic.pg.Console;
 import model.square.Square;
 
 

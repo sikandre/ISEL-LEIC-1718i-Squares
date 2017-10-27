@@ -17,7 +17,11 @@ public class Squares {
         Square.model = this;
     }
 
-    public Square getSquare(int l, int c) { return (l<0 || l>=HEIGHT || c<0 || c>=WIDTH) ? null : grid[l][c]; }
+    public Square getSquare(int l, int c) {
+        return (l<0 || l>=HEIGHT || c<0 || c>=WIDTH) ? null : grid[l][c];
+    }
+
+
     void putSquare(int l, int c, Square cell) { grid[l][c] = cell; }
 
     private int totalMoves;
@@ -71,7 +75,6 @@ public class Squares {
         if (listener != null)
             listener.notifyDelete(square,line,col);
     }
-
     public boolean touch(int line, int col) {
         Square s = grid[line][col];
         if (s == null)return false;
@@ -79,4 +82,5 @@ public class Squares {
         //polimorfismo com o quadrado
         //return false;
     }
+
 }

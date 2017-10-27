@@ -12,8 +12,8 @@ public class EmptySquare extends Square {
         return false;
     }
 
-    @Override
+   /* @Override
     public int getColor() {
         return NO_COLOR;
-    }
+    }*/
 }
