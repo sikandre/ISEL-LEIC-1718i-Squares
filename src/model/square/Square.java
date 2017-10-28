@@ -6,7 +6,8 @@ import model.Squares;
 public abstract class Square {
     public static final int NO_COLOR = -1;
     public static Squares model;  // The model of game.
-    public boolean isSelected = false;
+
+    public boolean isSelected;
 
 
     public abstract boolean touch(int line, int col);
@@ -25,7 +26,4 @@ public abstract class Square {
         return this;
     }
 
-    public boolean isSelected() {
-        return isSelected=false;
-    }
 }

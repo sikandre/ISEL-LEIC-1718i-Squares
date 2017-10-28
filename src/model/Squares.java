@@ -70,6 +70,7 @@ public class Squares {
         return true;
     }
 
+
     public void destroySquare(Square square, int line, int col) {
         grid[line][col] = null;
         if (listener != null)
