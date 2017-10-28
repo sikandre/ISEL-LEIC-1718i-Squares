@@ -1,6 +1,8 @@
 package model;
 
 import model.square.*;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Squares {
@@ -70,6 +72,19 @@ public class Squares {
         return true;
     }
 
+    public void notifyMove(Square square, int lFrom, int c, int lTo){
+        if(lFrom>lTo){
+            int aux=lFrom;
+            lFrom=lTo;
+            lTo=aux;
+        }
+            grid[lTo][c]=grid[lFrom][c];
+
+        //grid[lTo][c]=grid[lFrom][c];//resolver com o array copy
+        if(listener != null)
+            listener.notifyMove(square,lFrom,c,lTo);
+
+    }
 
     public void destroySquare(Square square, int line, int col) {
         grid[line][col] = null;

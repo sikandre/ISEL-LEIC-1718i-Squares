@@ -8,6 +8,7 @@ public class ColorSquare extends Square {
     private char type;
     private int count = 0;
     private int color;
+    int initLine,initCol;
 
 
 
@@ -39,6 +40,8 @@ public class ColorSquare extends Square {
 
     @Override
     public boolean touch(int line, int col) {
+        initLine = line;
+        initCol = col;
 
         /*selectGroup(line, col);
         model.destroySquare(this, line, col);
@@ -47,6 +50,7 @@ public class ColorSquare extends Square {
         selectGroup(line, col);
         if(count>1)
         model.destroySquare(this, line, col);
+
 
 
         return true;
@@ -74,6 +78,11 @@ public class ColorSquare extends Square {
         count++;
         square.isSelected=true;
         model.destroySquare(this, l, c);
+/*
+        model.notifyMove(this,initLine,c,l);//init line errado
+*/
+
+
         System.out.println("Total iguais= " + count);//para debug
 
         checkAround(model.getSquare(l-1,c),l-1,c);
