@@ -82,7 +82,7 @@ public class Loader {
             for(String word : cells) {                  // For each description
                 char type = word.charAt(0);
                 Square cell = createSquare(type);
-                model.putSquare(l,c++,cell);              // Add square to the model
+                model.putSquare(cell, l,c++);              // Add square to the model
             }
         }
     }

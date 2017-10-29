@@ -4,14 +4,9 @@ import model.Squares;
 
 public class ColorSquare extends Square {
 
-
     private char type;
     private int count = 0;
     private int color;
-    int initLine,initCol;
-
-
-
 
     ColorSquare(char type){
         this.type = type;
@@ -36,32 +31,31 @@ public class ColorSquare extends Square {
 
     }
 
-
-
     @Override
     public boolean touch(int line, int col) {
-        initLine = line;
-        initCol = col;
-
-        /*selectGroup(line, col);
-        model.destroySquare(this, line, col);
-        //TODO*/
 
         selectGroup(line, col);
-        if(count>1)
-        model.destroySquare(this, line, col);
+        if(count>1) {
+            if (count >= 6) {
+                Square s = new BombSquare('B');
+                model.newSquare(s,line,col);
+            }
+            else if (count == 5) {
+                int random = (int) (Math.random() * 2);
+                Square s = random == 1 ? new SpaceSquare('V') : new LineSquare('H');
+                model.newSquare(s, line, col);
+            }
+            else
+                model.destroySquare(this, line, col);
+            model.moveSquare();
+        }
 
-
-
-        return true;
+        return false;
     }
-
 
     private void selectGroup(int l, int c){
         count = 1;
         model.getSquare(l,c).isSelected = true; //coloca o square inicial a isSelected
-
-        System.out.println("count = "+count); //para debug
 
         checkAround(model.getSquare(l-1,c),l-1,c);
         checkAround(model.getSquare(l + 1, c), l+1,c);
@@ -78,12 +72,6 @@ public class ColorSquare extends Square {
         count++;
         square.isSelected=true;
         model.destroySquare(this, l, c);
-/*
-        model.notifyMove(this,initLine,c,l);//init line errado
-*/
-
-
-        System.out.println("Total iguais= " + count);//para debug
 
         checkAround(model.getSquare(l-1,c),l-1,c);
         checkAround(model.getSquare(l + 1, c), l+1,c);

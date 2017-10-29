@@ -2,7 +2,6 @@ package model;
 
 import model.square.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Squares {
@@ -24,7 +23,7 @@ public class Squares {
     }
 
 
-    void putSquare(int l, int c, Square cell) { grid[l][c] = cell; }
+    void putSquare(Square cell, int l, int c) { grid[l][c] = cell; }
 
     private int totalMoves;
 
@@ -72,18 +71,29 @@ public class Squares {
         return true;
     }
 
-    public void notifyMove(Square square, int lFrom, int c, int lTo){
-        if(lFrom>lTo){
-            int aux=lFrom;
-            lFrom=lTo;
-            lTo=aux;
+
+    public void moveSquare(){
+        Square s;
+        for (int l = HEIGHT-1; l > 1 ; l--) {
+            for (int c = WIDTH-1; c > 0; c--) {
+                s=grid[l][c];
+                if(s==null) {
+                    s = grid[l - 1][c];
+                    grid[l - 1][c] = null;
+                    if (listener != null)
+                        listener.notifyMove(s,l,c,l-1);
+                    putSquare(s,l,c);
+                }
+
+            }
         }
-            grid[lTo][c]=grid[lFrom][c];
+    }
 
-        //grid[lTo][c]=grid[lFrom][c];//resolver com o array copy
-        if(listener != null)
-            listener.notifyMove(square,lFrom,c,lTo);
-
+    public void newSquare(Square square, int line, int col) {
+        grid[line][col]= square;
+        if (listener != null)
+            listener.notifyPut(square,line,col);
+        putSquare(square, line,col);
     }
 
     public void destroySquare(Square square, int line, int col) {
