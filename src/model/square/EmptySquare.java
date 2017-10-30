@@ -12,6 +12,11 @@ public class EmptySquare extends Square {
         return false;
     }
 
+    @Override
+    public boolean isMoveble() {
+        return false;
+    }
+
    /* @Override
     public int getColor() {
         return NO_COLOR;

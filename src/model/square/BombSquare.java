@@ -3,8 +3,14 @@ package model.square;
 public class BombSquare extends Square {
     protected char type;
 
+
     public BombSquare(char type) {
         this.type = type;
+    }
+
+    @Override
+    public boolean isMoveble() {
+        return true;
     }
 
     @Override

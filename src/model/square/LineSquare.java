@@ -17,4 +17,9 @@ public class LineSquare extends Square{
         return NO_COLOR;
     }
 
+    @Override
+    public boolean isMoveble() {
+        return true;
+    }
+
 }

@@ -11,6 +11,11 @@ public class SpaceSquare extends Square{
     }
 
     @Override
+    public boolean isMoveble() {
+        return true;
+    }
+
+    @Override
     public boolean touch(int line, int col) {
         return false;
     }
