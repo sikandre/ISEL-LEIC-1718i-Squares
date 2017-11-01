@@ -14,9 +14,16 @@ public class ColorSquare extends Square {
             color = type - '1';
     }
 
+
+
     @Override
     public boolean isMoveble() {
         return true;
+    }
+
+    @Override
+    public boolean isSelected() {
+        return isSelected;
     }
 
     @Override
@@ -26,27 +33,30 @@ public class ColorSquare extends Square {
 
     @Override
     public boolean touch(int line, int col) {
-        selectGroup(line, col);
+        checkAroundSquares(line, col);
         if(count>1) {
-            if (count >= 6) {
+            isSelected = true;
+            if (count >= 2) {
                 Square s = new BombSquare('B');
                 model.changeSquare(s,line,col);
             }
-            else if (count == 10) {
+            if (count >= 3) {
                 int random = (int) (Math.random() * 2);
-                Square s = random == 1 ? new SpaceSquare('V') : new LineSquare('H');
+                Square s = random == 1 ? new HorizotalSquare('V') : new VerticalSquare('H');
                 model.changeSquare(s, line, col);
             }
-            else
-                model.destroySquare(this, line, col);
             return true;
         }
+
         return false;
     }
 
-    private void selectGroup(int l, int c){
+
+    @Override
+    public void checkAroundSquares(int l, int c){
         count = 1;
-        isSelected = true; //coloca o square inicial a isSelected
+
+        //isSelected = true; //coloca o square inicial a isSelected
 
         checkAround(model.getSquare(l-1,c),l-1,c);
         checkAround(model.getSquare(l + 1, c), l+1,c);
@@ -55,6 +65,7 @@ public class ColorSquare extends Square {
     }
 
     private  void checkAround(Square square, int l,int c) {
+        //TODO
         if (!(square instanceof ColorSquare))
             return;
         if(((ColorSquare) square).color!= color || square.isSelected)
@@ -62,7 +73,6 @@ public class ColorSquare extends Square {
 
         count++;
         square.isSelected=true;
-        model.destroySquare(square, l, c);
 
         checkAround(model.getSquare(l-1,c),l-1,c);
         checkAround(model.getSquare(l + 1, c), l+1,c);

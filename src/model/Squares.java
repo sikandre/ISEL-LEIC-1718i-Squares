@@ -12,7 +12,6 @@ public class Squares {
     private Square[][] grid = new Square[HEIGHT][WIDTH];
 
     //TODO
-    //rever
     public Squares(int moves) {
         totalMoves = moves;
         Square.model = this;
@@ -81,17 +80,16 @@ public class Squares {
         return goals.get(i);
     }
 
-    //REVER
+    //TODO
     public boolean addGoal(Goal goal) {
         goals.add(goal);
         return true;
     }
 
-    //todo
+    //TODO
     public void moveSquare() {
-        Square s;
         for (int l = HEIGHT - 1; l > 0; l--){//leitura do array para encontar o primeiro null
-            for (int c = WIDTH - 1; c > 0; c--) {
+            for (int c = WIDTH - 1; c >= 0; c--) {
                 if (grid[l][c] == null) {
                     for (int line = l-1; line >= 0; line--)
                         if (grid[line][c]!=null && grid[line][c].isMoveble()) {
@@ -104,22 +102,10 @@ public class Squares {
                         }
                 }
             }
-         }
+        }
     }
 
 
-                    /*//condicao imcompleta apenas para teste. falta resolver emptysquare e null[l-1]
-                    //metodo de possivel move
-                    s = grid[l - 1][c];
-                    grid[l - 1][c] = null;
-                    if (listener != null)
-                        listener.notifyMove(s,l,c,l-1);
-                    putSquare(s,l,c);//errado
-                    changeSquare(s,l,c;//cria um novo square em vez de mover
-
-                }
-            }
-    }*/
 
     public void changeSquare(Square square, int line, int col) {
         grid[line][col]= square;
@@ -128,26 +114,58 @@ public class Squares {
         putSquare(square, line,col);
     }
 
-    public void destroySquare(Square square, int line, int col) {
-        grid[line][col] = null;
-        if (listener != null)
-            listener.notifyDelete(square,line,col);
-    }
+    //TODO
     public boolean touch(int line, int col) {
         Square s = grid[line][col];
-        /*if (s == null)return false;
-        return s.touch(line, col);*/
         if(s.touch(line,col))
+            destroySquare(line, col);
             moveSquare();
-        //return s.touch(line, col);
+            createNewSquare();
+
         return true;
-
-
-
 
         //move se touch return true
         //polimorfismo com o quadrado
         //return false;
     }
 
+    public void destroySquare(int line, int col) {
+        Square s = grid[line][col];
+        for (int i = grid.length - 1; i >= 0; i--) {
+            for (int j = grid[i].length - 1; j >= 0; j--) {
+                if (grid[i][j] != null && grid[i][j].isSelected()) {
+                    /*if (grid[i][j].getColor() == Square.NO_COLOR){
+                        specialSquare(i,j);
+                    }*/
+                    /*if (grid[i][j].getColor() == Square.NO_COLOR){
+                        touch(i,j);
+                    }*/
+                    grid[i][j] = null;
+                    if (listener != null)
+                        listener.notifyDelete(s,i,j);
+                }
+            }
+        }
+    }
+
+    public void specialSquare(int line, int col){
+        Square s = grid[line][col];
+        s.checkAroundSquares(line, col);
+
+    }
+
+    public void createNewSquare(){
+
+        for (int i = grid.length - 1; i >= 0; i--) {
+            for (int j = grid[i].length - 1; j >= 0; j--) {
+                Square s = grid[j][i];
+                if(s == null){
+                    grid[j][i] = Square.newInstance('.');
+                    s = grid[j][i];
+                    if (listener != null)
+                        listener.notifyNew(s,j,i);
+                }
+            }
+        }
+    }
 }

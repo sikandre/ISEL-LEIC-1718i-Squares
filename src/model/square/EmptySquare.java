@@ -17,8 +17,12 @@ public class EmptySquare extends Square {
         return false;
     }
 
-   /* @Override
-    public int getColor() {
-        return NO_COLOR;
-    }*/
+    @Override
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    @Override
+    public void checkAroundSquares(int line, int col) {}
+
 }

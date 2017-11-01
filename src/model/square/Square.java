@@ -8,17 +8,16 @@ public abstract class Square {
     public static Squares model;  // The model of game.
 
     protected boolean isSelected;
-    protected boolean isMoveble;
-
 
     public abstract boolean touch(int line, int col);
     public int getColor(){
         return NO_COLOR;
     }
+
     
     public static Square newInstance(char type) {
-        if(type=='V') return new SpaceSquare(type);
-        if(type=='H') return new LineSquare(type);
+        if(type=='H') return new HorizotalSquare(type);
+        if(type=='V') return new VerticalSquare(type);
         if(type=='B') return new BombSquare(type);
         if(type=='X') return new EmptySquare(type);
         if(type=='.'||type>='1'&&type <= Squares.MAX_COLORS+'0')
@@ -30,4 +29,7 @@ public abstract class Square {
     }
     public abstract boolean isMoveble();
 
+    public abstract boolean isSelected();
+
+    public abstract void checkAroundSquares(int line, int col);
 }

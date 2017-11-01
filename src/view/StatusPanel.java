@@ -8,7 +8,7 @@ import view.square.SquareTile;
 
 import java.util.ArrayList;
 
-public class StatusPanel extends View {
+public class    StatusPanel extends View {
     private FieldView moves = new FieldView("Moves",1,0,"--");
 
     private static class GoalView extends View {
