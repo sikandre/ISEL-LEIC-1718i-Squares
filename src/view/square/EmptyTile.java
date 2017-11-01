@@ -9,7 +9,7 @@ public class EmptyTile extends SquareTile {
     }
 
     @Override
-    public void paint() {paintByStrings("","","" );
+    public void paint() {paintByStrings("   ","   ","   " );
 
     }
 
