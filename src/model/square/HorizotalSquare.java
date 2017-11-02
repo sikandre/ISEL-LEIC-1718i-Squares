@@ -15,7 +15,7 @@ public class HorizotalSquare extends Square{
 
     @Override
     public boolean isSelected() {
-        return isSelected;
+        return selected;
     }
 
     @Override
@@ -29,13 +29,17 @@ public class HorizotalSquare extends Square{
         for (int c = 0; c < model.WIDTH; c++) {
             Square sq = model.getSquare(line, c);
             if (!(sq instanceof EmptySquare)) {
-                sq.isSelected = true;
+                sq.selected = true;
             }
         }
     }
 
+    @Override
     public int getColor() {
         return NO_COLOR;
     }
+
+    @Override
+    public boolean isSpecial(){ return true; }
 
 }

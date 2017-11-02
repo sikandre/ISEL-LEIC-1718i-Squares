@@ -15,7 +15,7 @@ public class BombSquare extends Square {
 
     @Override
     public boolean isSelected() {
-        return isSelected;
+        return selected;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class BombSquare extends Square {
                 Square sq = model.getSquare(x,y);
                 if (!(sq instanceof EmptySquare)) {
                     //TODO criar um metodo para
-                    sq.isSelected = true;
+                    sq.selected = true;
                 }
             }
         }
@@ -42,4 +42,7 @@ public class BombSquare extends Square {
     public int getColor() {
         return NO_COLOR;
     }
+
+    @Override
+    public boolean isSpecial(){ return true; }
 }

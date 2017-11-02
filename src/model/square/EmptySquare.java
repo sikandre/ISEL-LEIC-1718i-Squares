@@ -19,10 +19,14 @@ public class EmptySquare extends Square {
 
     @Override
     public boolean isSelected() {
-        return isSelected;
+        return selected;
     }
 
     @Override
     public void checkAroundSquares(int line, int col) {}
+
+    @Override
+    public boolean isSpecial() { return true; }
+
 
 }

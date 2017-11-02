@@ -19,11 +19,12 @@ public class VerticalSquare extends Square{
         for (int l = 0; l < model.HEIGHT; l++) {
             Square sq = model.getSquare(l, col);
             if (!(sq instanceof EmptySquare)) {
-                sq.isSelected = true;
+                sq.selected = true;
             }
         }
     }
 
+    @Override
     public int getColor() {
         return NO_COLOR;
     }
@@ -34,6 +35,9 @@ public class VerticalSquare extends Square{
     }
 
     @Override
-    public boolean isSelected() { return isSelected; }
+    public boolean isSelected() { return selected; }
+
+    @Override
+    public boolean isSpecial(){ return true; }
 
 }

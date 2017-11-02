@@ -23,7 +23,7 @@ public class ColorSquare extends Square {
 
     @Override
     public boolean isSelected() {
-        return isSelected;
+        return selected;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ColorSquare extends Square {
     public boolean touch(int line, int col) {
         checkAroundSquares(line, col);
         if(count>1) {
-            isSelected = true;
+            selected = true;
             if (count >= 2) {
                 Square s = new BombSquare('B');
                 model.changeSquare(s,line,col);
@@ -56,7 +56,7 @@ public class ColorSquare extends Square {
     public void checkAroundSquares(int l, int c){
         count = 1;
 
-        //isSelected = true; //coloca o square inicial a isSelected
+        //selected = true; //coloca o square inicial a selected
 
         checkAround(model.getSquare(l-1,c),l-1,c);
         checkAround(model.getSquare(l + 1, c), l+1,c);
@@ -68,11 +68,11 @@ public class ColorSquare extends Square {
         //TODO
         if (!(square instanceof ColorSquare))
             return;
-        if(((ColorSquare) square).color!= color || square.isSelected)
+        if(((ColorSquare) square).color!= color || square.selected)
             return;
 
         count++;
-        square.isSelected=true;
+        square.selected =true;
 
         checkAround(model.getSquare(l-1,c),l-1,c);
         checkAround(model.getSquare(l + 1, c), l+1,c);
@@ -80,7 +80,8 @@ public class ColorSquare extends Square {
         checkAround(model.getSquare(l, c + 1),l, c+1);
     }
 
-
+    @Override
+    public boolean isSpecial(){ return false; }
 
 
 
