@@ -10,7 +10,6 @@ public class VerticalSquare extends Square{
 
     @Override
     public boolean touch(int line, int col) {
-
         checkAroundSquares(line,col);
         return true;
     }
@@ -18,6 +17,7 @@ public class VerticalSquare extends Square{
     public void checkAroundSquares(int line, int col){
         for (int l = 0; l < model.HEIGHT; l++) {
             Square sq = model.getSquare(l, col);
+            //TODO modifica instanceof por getcolor
             if (!(sq instanceof EmptySquare)) {
                 sq.selected = true;
             }

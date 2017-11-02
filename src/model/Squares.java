@@ -129,17 +129,14 @@ public class Squares {
         //return false;
     }
 
+
+
     public void destroySquare(int line, int col) {
+        specialSquareIsSelected();
         Square s = grid[line][col];
         for (int i = grid.length - 1; i >= 0; i--) {
             for (int j = grid[i].length - 1; j >= 0; j--) {
                 if (grid[i][j] != null && grid[i][j].isSelected()) {
-                    /*if (grid[i][j].getColor() == Square.NO_COLOR){
-                        specialSquare(i,j);
-                    }*/
-                    /*if (grid[i][j].getColor() == Square.NO_COLOR){
-                        touch(i,j);
-                    }*/
                     grid[i][j] = null;
                     if (listener != null)
                         listener.notifyDelete(s,i,j);
@@ -148,14 +145,17 @@ public class Squares {
         }
     }
 
-    public void specialSquare(int line, int col){
-        Square s = grid[line][col];
-        s.checkAroundSquares(line, col);
+    private void specialSquareIsSelected() {
+        for (int l = 0; l < HEIGHT; ++l)
+            for (int c = 0; c < WIDTH; ++c) {
+                Square s = grid[l][c];
+                if(s.isSelected() && s.isSpecial())
+                    s.checkAroundSquares(l, c);// polimorfismo
 
+            }
     }
 
     public void createNewSquare(){
-
         for (int i = grid.length - 1; i >= 0; i--) {
             for (int j = grid[i].length - 1; j >= 0; j--) {
                 Square s = grid[j][i];

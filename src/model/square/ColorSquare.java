@@ -56,8 +56,8 @@ public class ColorSquare extends Square {
     public void checkAroundSquares(int l, int c){
         count = 1;
 
-        //selected = true; //coloca o square inicial a selected
 
+        //TODO #código repetido
         checkAround(model.getSquare(l-1,c),l-1,c);
         checkAround(model.getSquare(l + 1, c), l+1,c);
         checkAround(model.getSquare(l, c - 1),l, c-1);
@@ -65,7 +65,7 @@ public class ColorSquare extends Square {
     }
 
     private  void checkAround(Square square, int l,int c) {
-        //TODO
+        //TODO modifica instanceof por getcolor
         if (!(square instanceof ColorSquare))
             return;
         if(((ColorSquare) square).color!= color || square.selected)
@@ -74,6 +74,7 @@ public class ColorSquare extends Square {
         count++;
         square.selected =true;
 
+        //TODO #código repetido
         checkAround(model.getSquare(l-1,c),l-1,c);
         checkAround(model.getSquare(l + 1, c), l+1,c);
         checkAround(model.getSquare(l, c - 1),l, c-1);

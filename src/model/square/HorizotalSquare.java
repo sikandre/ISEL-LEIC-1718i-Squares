@@ -28,6 +28,7 @@ public class HorizotalSquare extends Square{
     public void checkAroundSquares(int line, int col){
         for (int c = 0; c < model.WIDTH; c++) {
             Square sq = model.getSquare(line, c);
+            //TODO modifica instanceof por getcolor
             if (!(sq instanceof EmptySquare)) {
                 sq.selected = true;
             }
