@@ -26,7 +26,7 @@ public class EmptySquare extends Square {
     public void checkAroundSquares(int line, int col) {}
 
     @Override
-    public boolean isSpecial() { return true; }
+    public boolean isSpecial() { return special=true; }
 
 
 }

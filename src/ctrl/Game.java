@@ -68,8 +68,10 @@ public class Game {
             for (int c = 0; c < Squares.WIDTH; c++)
                 view.setTile(l,c, SquareTile.newInstance( model.getSquare(l,c) ));
         status.clearGoals();
-        for (int i = 0; i < model.getNumGoals(); i++)
+        for (int i = 0; i < model.getNumGoals(); i++) {
             status.addGoal(model.getGoal(i).square);
+            status.setMoves(model.getTotalMoves());
+        }
         status.paint();
 
         while ( play() ) ;      // Process one input event (mouse or keyboard)

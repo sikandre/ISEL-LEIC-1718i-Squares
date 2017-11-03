@@ -36,18 +36,17 @@ public class ColorSquare extends Square {
         checkAroundSquares(line, col);
         if(count>1) {
             selected = true;
-            if (count >= 2) {
+            if (count >= 6) {
                 Square s = new BombSquare('B');
                 model.changeSquare(s,line,col);
             }
-            if (count >= 3) {
+            if (count == 5) {
                 int random = (int) (Math.random() * 2);
                 Square s = random == 1 ? new HorizotalSquare('V') : new VerticalSquare('H');
                 model.changeSquare(s, line, col);
             }
             return true;
         }
-
         return false;
     }
 
@@ -82,7 +81,7 @@ public class ColorSquare extends Square {
     }
 
     @Override
-    public boolean isSpecial(){ return false; }
+    public boolean isSpecial(){ return special=false; }
 
 
 

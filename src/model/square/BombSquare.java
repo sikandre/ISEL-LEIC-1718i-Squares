@@ -44,5 +44,5 @@ public class BombSquare extends Square {
     }
 
     @Override
-    public boolean isSpecial(){ return true; }
+    public boolean isSpecial(){ return special=true; }
 }

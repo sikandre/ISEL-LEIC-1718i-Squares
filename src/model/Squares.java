@@ -1,6 +1,7 @@
 package model;
 
 import model.square.*;
+import view.StatusPanel;
 
 import java.util.ArrayList;
 
@@ -15,11 +16,13 @@ public class Squares {
     public Squares(int moves) {
         totalMoves = moves;
         Square.model = this;
+
     }
 
     public Square getSquare(int l, int c) {
         return (l < 0 || l >= HEIGHT || c < 0 || c >= WIDTH) ? null : grid[l][c];
     }
+
 
 
     void putSquare(Square cell, int l, int c) {
@@ -38,6 +41,10 @@ public class Squares {
         return true;
     }
 
+    public int getTotalMoves() {
+        return totalMoves;
+    }
+
 
     public static class Goal {
         public Square square;
@@ -52,6 +59,8 @@ public class Squares {
             return square.equals(g);
         }
     }
+
+
 
     private ArrayList<Goal> goals = new ArrayList<>(MAX_GOALS);
 
@@ -86,7 +95,6 @@ public class Squares {
         return true;
     }
 
-    //TODO
     public void moveSquare() {
         for (int l = HEIGHT - 1; l > 0; l--){//leitura do array para encontar o primeiro null
             for (int c = WIDTH - 1; c >= 0; c--) {

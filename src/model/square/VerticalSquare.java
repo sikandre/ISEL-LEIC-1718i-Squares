@@ -38,6 +38,6 @@ public class VerticalSquare extends Square{
     public boolean isSelected() { return selected; }
 
     @Override
-    public boolean isSpecial(){ return true; }
+    public boolean isSpecial(){ return special=true; }
 
 }

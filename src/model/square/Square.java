@@ -8,6 +8,8 @@ public abstract class Square {
     public static Squares model;  // The model of game.
     protected boolean selected;
     protected boolean special;
+    public static int count = 0;
+
 
     public abstract boolean touch(int line, int col);
     public int getColor(){
