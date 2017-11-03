@@ -70,8 +70,10 @@ public class Game {
         status.clearGoals();
         for (int i = 0; i < model.getNumGoals(); i++) {
             status.addGoal(model.getGoal(i).square);
-            status.setMoves(model.getTotalMoves());
+            //TODO
+            status.setGoal(i, model.getGoal(i).number);
         }
+        status.setMoves(model.getTotalMoves());
         status.paint();
 
         while ( play() ) ;      // Process one input event (mouse or keyboard)
@@ -141,9 +143,9 @@ public class Game {
             if (me!=null && me.type==MouseEvent.DOWN) {
                 Position pos = view.getModelPosition(me.line, me.col); // Convert mouse position to square coordinates
                 if (pos!=null && model.touch(pos.line, pos.col)) {
-                    //teste
-                    //System.out.println(pos.line+","+pos.col);
-                    //-----
+                    //TODO é aqui que vai atualizar o decremento e as contagens das peças
+                    status.setMoves(model.getTotalMoves());
+                    //status.setGoal(int idx /*passar a posição*/, int number /*passar o valor ja com o decremento feito*/);
                     while( view.stepAnimations() )
                         Console.sleep(50);
                     return ! model.isOver();

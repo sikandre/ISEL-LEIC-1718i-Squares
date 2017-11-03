@@ -10,13 +10,10 @@ public abstract class Square {
     protected boolean special;
     public static int count = 0;
 
-
     public abstract boolean touch(int line, int col);
-    public int getColor(){
-        return NO_COLOR;
-    }
 
-    
+    public int getColor(){return NO_COLOR;}
+
     public static Square newInstance(char type) {
         if(type=='H') return new HorizotalSquare(type);
         if(type=='V') return new VerticalSquare(type);
@@ -26,9 +23,7 @@ public abstract class Square {
             return new ColorSquare(type);
         return null;
     }
-    public Square getSquare() {
-        return this;
-    }
+    public Square getSquare() {return this;}
 
     public abstract boolean isMoveble();
 

@@ -4,7 +4,6 @@ import model.Squares;
 
 public class ColorSquare extends Square {
 
-    private static int count = 0;
     private int color;
 
     ColorSquare(char type){
@@ -13,8 +12,6 @@ public class ColorSquare extends Square {
         else
             color = type - '1';
     }
-
-
 
     @Override
     public boolean isMoveble() {

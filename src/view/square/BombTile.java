@@ -9,13 +9,10 @@ public class BombTile extends SquareTile {
         super(square);
     }
 
-
     @Override
     public void paint() {paintByStrings("\\|/","=o=","/|\\");
     }
 
     @Override
-    int getColor() {
-        return Console.GRAY;
-    }
+    int getColor() {return Console.GRAY;}
 }

@@ -9,6 +9,8 @@ public class Squares {
     public static final int MAX_COLORS = 6;
     public static final int MAX_GOALS = 6;
     public static final int HEIGHT = 10, WIDTH = 10;
+    private int totalMoves;
+
 
     private Square[][] grid = new Square[HEIGHT][WIDTH];
 
@@ -19,32 +21,19 @@ public class Squares {
 
     }
 
-    public Square getSquare(int l, int c) {
-        return (l < 0 || l >= HEIGHT || c < 0 || c >= WIDTH) ? null : grid[l][c];
-    }
+    public Square getSquare(int l, int c) {return (l < 0 || l >= HEIGHT || c < 0 || c >= WIDTH) ? null : grid[l][c];}
 
+    void putSquare(Square cell, int l, int c) {grid[l][c] = cell;}
 
+    public int getTotalMoves() {return totalMoves;}
 
-    void putSquare(Square cell, int l, int c) {
-        grid[l][c] = cell;
-    }
-
-    private int totalMoves;
-
-    public boolean isOver() {
-        return totalMoves == 0 || isWinner();
-    }
+    public boolean isOver() {return totalMoves == 0 || isWinner();}
 
     public boolean isWinner() {
         for (Goal goal : goals)
             if (goal.number > 0) return false;
         return true;
     }
-
-    public int getTotalMoves() {
-        return totalMoves;
-    }
-
 
     public static class Goal {
         public Square square;
@@ -55,12 +44,8 @@ public class Squares {
             number = num;
         }
 
-        boolean equals(Goal g) {
-            return square.equals(g);
-        }
+        boolean equals(Goal g) {return square.equals(g);}
     }
-
-
 
     private ArrayList<Goal> goals = new ArrayList<>(MAX_GOALS);
 
@@ -76,18 +61,12 @@ public class Squares {
 
     private Listener listener = null;
 
-    public void setListener(Listener l) {
-        listener = l;
-    }
+    public void setListener(Listener l) {listener = l;}
 
     //TODO
-    public int getNumGoals() {
-        return goals.size();
-    }
+    public int getNumGoals() {return goals.size();}
 
-    public Goal getGoal(int i) {
-        return goals.get(i);
-    }
+    public Goal getGoal(int i) {return goals.get(i);}
 
     //TODO
     public boolean addGoal(Goal goal) {
@@ -113,8 +92,6 @@ public class Squares {
         }
     }
 
-
-
     public void changeSquare(Square square, int line, int col) {
         grid[line][col]= square;
         if (listener != null)
@@ -129,15 +106,12 @@ public class Squares {
             destroySquare(line, col);
             moveSquare();
             createNewSquare();
-
+            --totalMoves;
         return true;
-
         //move se touch return true
         //polimorfismo com o quadrado
         //return false;
     }
-
-
 
     public void destroySquare(int line, int col) {
         specialSquareIsSelected();
