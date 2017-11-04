@@ -145,7 +145,8 @@ public class Game {
                 if (pos!=null && model.touch(pos.line, pos.col)) {
                     //TODO é aqui que vai atualizar o decremento e as contagens das peças
                     status.setMoves(model.getTotalMoves());
-                    //status.setGoal(int idx /*passar a posição*/, int number /*passar o valor ja com o decremento feito*/);
+                    for (int i = 0; i < model.getNumGoals(); i++)
+                        status.setGoal( i , model.getGoal(i).number);
                     while( view.stepAnimations() )
                         Console.sleep(50);
                     return ! model.isOver();

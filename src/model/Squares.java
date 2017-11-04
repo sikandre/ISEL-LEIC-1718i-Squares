@@ -47,6 +47,8 @@ public class Squares {
         boolean equals(Goal g) {return square.equals(g);}
     }
 
+
+
     private ArrayList<Goal> goals = new ArrayList<>(MAX_GOALS);
 
     public interface Listener {
@@ -98,20 +100,32 @@ public class Squares {
             listener.notifyPut(square,line,col);
         putSquare(square, line,col);
     }
-
     //TODO
     public boolean touch(int line, int col) {
         Square s = grid[line][col];
-        if(s.touch(line,col))
+        if(s.touch(line,col)) {
+            updateGoalNumber(s);
             destroySquare(line, col);
             moveSquare();
             createNewSquare();
-            --totalMoves;
-        return true;
-        //move se touch return true
-        //polimorfismo com o quadrado
-        //return false;
+            return true;
+        }
+        return  false;
     }
+
+    public boolean updateGoalNumber(Square s){
+        Goal g;
+        for (int i = 0; i < getNumGoals(); ++i) {
+            g = goals.get(i);
+            if (s.getColor() == g.square.getColor()){
+                goals.set(i, g);
+                g.number--;
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public void destroySquare(int line, int col) {
         specialSquareIsSelected();
@@ -119,12 +133,14 @@ public class Squares {
         for (int i = grid.length - 1; i >= 0; i--) {
             for (int j = grid[i].length - 1; j >= 0; j--) {
                 if (grid[i][j] != null && grid[i][j].isSelected()) {
+                    updateGoalNumber(grid[i][j]);
                     grid[i][j] = null;
                     if (listener != null)
                         listener.notifyDelete(s,i,j);
                 }
             }
         }
+        --totalMoves;
     }
 
     private void specialSquareIsSelected() {

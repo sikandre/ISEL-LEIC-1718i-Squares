@@ -20,6 +20,7 @@ public class VerticalSquare extends Square{
             //TODO modifica instanceof por getcolor
             if (!(sq instanceof EmptySquare)) {
                 sq.selected = true;
+                ++count;
             }
         }
     }
