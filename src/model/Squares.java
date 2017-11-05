@@ -95,11 +95,10 @@ public class Squares {
             listener.notifyPut(square,line,col);
         putSquare(square, line,col);
     }
-    //TODO
+
     public boolean touch(int line, int col) {
         Square s = grid[line][col];
         if(s.touch(line,col)) {
-            //updateGoalNumber(s);
             destroySquare(line, col);
             moveSquare();
             createNewSquare();
@@ -137,7 +136,7 @@ public class Squares {
         }
         --totalMoves;
     }
-    
+
 
     private void specialSquareIsSelected() {
         for (int l = 0; l < HEIGHT; ++l)
