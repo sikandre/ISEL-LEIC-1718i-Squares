@@ -47,29 +47,19 @@ public class ColorSquare extends Square {
         return false;
     }
 
-
     @Override
     public void checkAroundSquares(int l, int c){
         count = 1;
-
-        //TODO #código repetido
-        checkAround(model.getSquare(l-1,c),l-1,c);
-        checkAround(model.getSquare(l + 1, c), l+1,c);
-        checkAround(model.getSquare(l, c - 1),l, c-1);
-        checkAround(model.getSquare(l, c + 1),l, c+1);
+        checkAround(model.getSquare(l,c),l,c);
     }
 
     private  void checkAround(Square square, int l,int c) {
-        //TODO modifica instanceof por getcolor
-        if (!(square instanceof ColorSquare))
+        if(square==null || square.getColor()==NO_COLOR) //black and null squares
             return;
-        if(((ColorSquare) square).color!= color || square.selected)
+        if(square.getColor()!= color || square.selected)
             return;
-
         count++;
         square.selected =true;
-
-        //TODO #código repetido
         checkAround(model.getSquare(l-1,c),l-1,c);
         checkAround(model.getSquare(l + 1, c), l+1,c);
         checkAround(model.getSquare(l, c - 1),l, c-1);
