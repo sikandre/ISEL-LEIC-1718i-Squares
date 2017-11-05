@@ -137,6 +137,7 @@ public class Squares {
         }
         --totalMoves;
     }
+    
 
     private void specialSquareIsSelected() {
         for (int l = 0; l < HEIGHT; ++l)
