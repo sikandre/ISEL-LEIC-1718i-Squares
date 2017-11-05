@@ -111,7 +111,7 @@ public class Squares {
         Goal g;
         for (int i = 0; i < getNumGoals(); ++i) {
             g = goals.get(i);
-            if (s.getColor() == g.square.getColor()){
+            if (g.number > 0 && s.getColor() == g.square.getColor()){
                 goals.set(i, g);
                 g.number--;
                 return true;
