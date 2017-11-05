@@ -4,7 +4,7 @@ public class VerticalSquare extends Square{
 
     protected char type;
 
-    public VerticalSquare(char type) {
+    protected VerticalSquare(char type) {
         this.type = type;
     }
 

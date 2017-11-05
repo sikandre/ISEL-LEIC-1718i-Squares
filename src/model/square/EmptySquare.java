@@ -4,7 +4,7 @@ public class EmptySquare extends Square {
 
     private char type;
 
-    private EmptySquare(char type) {this.type = type;}
+    protected EmptySquare(char type) {this.type = type;}
 
     @Override
     public boolean touch(int line, int col) {return false;}

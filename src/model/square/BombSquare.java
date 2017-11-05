@@ -1,8 +1,10 @@
 package model.square;
 
+import model.Squares;
+
 public class BombSquare extends Square {
-    private char type;
-    private BombSquare(char type) {
+    protected char type;
+    protected BombSquare(char type) {
         this.type = type;
     }
 
@@ -24,8 +26,8 @@ public class BombSquare extends Square {
     }
 
     public void checkAroundSquares(int l, int c){
-        int rowLimit = model.HEIGHT-1;
-        int columnLimit = model.WIDTH-1;
+        int rowLimit = Squares.HEIGHT -1;
+        int columnLimit = Squares.WIDTH -1;
         for(int x = Math.max(0, l-1); x <= Math.min(l+1, rowLimit); x++) {
             for(int y = Math.max(0, c-1); y <= Math.min(c+1, columnLimit); y++) {
                 Square sq = model.getSquare(x,y);
