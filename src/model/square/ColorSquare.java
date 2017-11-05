@@ -79,6 +79,4 @@ public class ColorSquare extends Square {
     @Override
     public boolean isSpecial(){ return special=false; }
 
-
-
 }

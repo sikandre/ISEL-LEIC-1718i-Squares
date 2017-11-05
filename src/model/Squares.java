@@ -41,7 +41,7 @@ public class Squares {
             number = num;
         }
 
-        boolean equals(Goal g) {return square.equals(g);}
+        //boolean equals(Goal g) {return square.equals(g);}
     }
 
 

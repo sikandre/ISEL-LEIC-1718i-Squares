@@ -20,6 +20,7 @@ public class BombSquare extends Square {
 
     @Override
     public boolean touch(int line, int col) {
+        this.selected=true;
         checkAroundSquares(line,col);
         return true;
     }
@@ -30,8 +31,7 @@ public class BombSquare extends Square {
         for(int x = Math.max(0, l-1); x <= Math.min(l+1, rowLimit); x++) {
             for(int y = Math.max(0, c-1); y <= Math.min(c+1, columnLimit); y++) {
                 Square sq = model.getSquare(x,y);
-                //TODO modifica instanceof por getcolor
-                if (!(sq.getColor() == NO_COLOR)) {
+                if (!(sq.getColor() == NO_COLOR) || sq.isSpecial()) {
                     sq.selected = true;
                 }
             }
