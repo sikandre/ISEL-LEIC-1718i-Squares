@@ -31,7 +31,7 @@ public class BombSquare extends Square {
             for(int y = Math.max(0, c-1); y <= Math.min(c+1, columnLimit); y++) {
                 Square sq = model.getSquare(x,y);
                 //TODO modifica instanceof por getcolor
-                if (!(sq instanceof EmptySquare)) {
+                if (!(sq.getColor() == NO_COLOR)) {
                     sq.selected = true;
                 }
             }

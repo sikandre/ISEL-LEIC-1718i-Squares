@@ -11,14 +11,11 @@ public class Squares {
     public static final int HEIGHT = 10, WIDTH = 10;
     private int totalMoves;
 
-
     private Square[][] grid = new Square[HEIGHT][WIDTH];
 
-    //TODO
     public Squares(int moves) {
         totalMoves = moves;
         Square.model = this;
-
     }
 
     public Square getSquare(int l, int c) {return (l < 0 || l >= HEIGHT || c < 0 || c >= WIDTH) ? null : grid[l][c];}
@@ -65,12 +62,10 @@ public class Squares {
 
     public void setListener(Listener l) {listener = l;}
 
-    //TODO
     public int getNumGoals() {return goals.size();}
 
     public Goal getGoal(int i) {return goals.get(i);}
 
-    //TODO
     public boolean addGoal(Goal goal) {
         goals.add(goal);
         return true;
@@ -104,7 +99,7 @@ public class Squares {
     public boolean touch(int line, int col) {
         Square s = grid[line][col];
         if(s.touch(line,col)) {
-            updateGoalNumber(s);
+            //updateGoalNumber(s);
             destroySquare(line, col);
             moveSquare();
             createNewSquare();

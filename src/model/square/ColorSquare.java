@@ -52,7 +52,6 @@ public class ColorSquare extends Square {
     public void checkAroundSquares(int l, int c){
         count = 1;
 
-
         //TODO #código repetido
         checkAround(model.getSquare(l-1,c),l-1,c);
         checkAround(model.getSquare(l + 1, c), l+1,c);
