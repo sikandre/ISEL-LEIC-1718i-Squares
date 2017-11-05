@@ -1,10 +1,8 @@
 package model.square;
 
 public class BombSquare extends Square {
-    protected char type;
-
-
-    public BombSquare(char type) {
+    private char type;
+    private BombSquare(char type) {
         this.type = type;
     }
 

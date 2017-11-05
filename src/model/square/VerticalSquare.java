@@ -17,10 +17,8 @@ public class VerticalSquare extends Square{
     public void checkAroundSquares(int line, int col){
         for (int l = 0; l < model.HEIGHT; l++) {
             Square sq = model.getSquare(l, col);
-            //TODO modifica instanceof por getcolor
-            if (!(sq instanceof EmptySquare)) {
+            if(sq!=null || sq.getColor()!=NO_COLOR)
                 sq.selected = true;
-            }
         }
     }
 

@@ -2,9 +2,9 @@ package model.square;
 
 public class EmptySquare extends Square {
 
-    protected char type;
+    private char type;
 
-    public EmptySquare(char type) {this.type = type;}
+    private EmptySquare(char type) {this.type = type;}
 
     @Override
     public boolean touch(int line, int col) {return false;}
