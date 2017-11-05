@@ -49,8 +49,9 @@ public class ColorSquare extends Square {
 
     @Override
     public void checkAroundSquares(int l, int c){
-        count = 1;
+        count = 0;
         checkAround(model.getSquare(l,c),l,c);
+        if (count < 2) selected = false;
     }
 
     private  void checkAround(Square square, int l,int c) {
