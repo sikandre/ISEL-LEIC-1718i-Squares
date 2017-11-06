@@ -3,8 +3,8 @@ package view.square;
 import isel.leic.pg.Console;
 import model.square.Square;
 
-public class LineTile extends SquareTile {
-    public LineTile(Square square) {
+public class VerticalTile extends SquareTile {
+    public VerticalTile(Square square) {
         super(square);
     }
 

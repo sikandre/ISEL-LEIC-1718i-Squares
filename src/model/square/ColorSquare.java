@@ -14,7 +14,7 @@ public class ColorSquare extends Square {
     }
 
     @Override
-    public boolean isMoveble() {
+    public boolean isMovable() {
         return true;
     }
 

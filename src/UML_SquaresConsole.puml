@@ -1,0 +1,170 @@
+@startuml
+
+Squares *-- Square
+
+class Squares {
+    +{static}MAX_COLORS:int
+    +{static}MAX_GOALS:int
+    +{static}HEIGHT:int
+    +{static}WIDTH:int
+    -totalMoves:int
+    -grid:Square[][]
+    +Squares(moves:int)
+    +getSquare(l:int, c:int):Square
+    ~putSquare(cell:Square, l:int, c:int)
+    +getTotalMoves():int
+    +isOver():boolean
+    +isWinner():boolean
+
+    +{static}class Goal
+
+    -goals:ArrayList<Goal>
+
+    +interface Listener
+
+    -listener:Listener
+    +setListener(l:Listener)
+
+    +getNumGoals():int
+    +getGoal(i:int):Goal
+    +addGoal(goal:Goal):boolean
+    +moveSquare()
+    +changeSquare(square:Square, line:int, c:int)
+    +touch(line:int, col:int):boolean
+    +updateGoalNumber(s:Square)
+    +destroySquare(line:int, col:int)
+    +specialSquareIsSelected()
+    +createNewSquare()
+}
+
+abstract class SquareTile {
+    +{static}SIDE:int
+    ~COLORS:int[]
+    #square:Square
+    #SquareTile(square:Square)
+    #getColor:int
+    +{static}newInstance(square:Square):SquareTile
+    #paintByStrings(lines...:String)
+}
+
+class ColorTile {
+    -{static}CHARS:String[]
+    +ColorTile(square:Square)
+    +paint()
+}
+
+class BombTile {
+    +BombTile(square:Square)
+    +paint()
+    ~int getColor():int
+}
+
+class VerticalTile {
+    +VerticalTile(square:Square)
+    +paint()
+    ~getColor():int
+}
+
+class HorizontalTile {
+    +HorizontalTile(square:Square)
+    +paint()
+    ~getColor():int
+}
+
+class EmptyTile {
+    +EmptyTile(Square:Square)
+    +paint()
+    ~getColor():int
+}
+
+SquareTile <|-- ColorTile
+SquareTile <|-- BombTile
+SquareTile <|-- VerticalTile
+SquareTile <|-- HorizontalTile
+SquareTile <|-- EmptyTile
+
+abstract class Square {
+    +{static}NO_COLOR:int
+    +{static}model:Square
+    #selected:boolean
+    #special:boolean
+    +{static}count:int
+    +{abstract}touch(line:int, col:int):boolean
+    +getColor():int
+    +{static}newInstance(type:Char):Square
+    +getSquare():Square
+    +{abstract}isMovable():boolean
+    +{abstract}isSelected():boolean
+    +{abstract}checkAroundSquares(line:int, col:int)
+    +{abstract}isSpecial():boolean
+}
+
+class ColorSquare {
+    -color:int
+    +ColorSquare(type:char)
+    +isMovable():boolean
+    +isSelected():boolean
+    +getColor():int
+    +touch(line:int col:int):boolean
+    +checkAroundSquares(l:int, c:int)
+    -checkAround(square:Square, l:int, c:int)
+    +isSpecial():boolean
+}
+
+class BombSquare {
+    #type:char
+    #BombSquare(type:char)
+    +isMovable():boolean
+    +isSelected():boolean
+    +touch(line:int, col:int):boolean
+    +checkAroundSquares(l:int, c:int)
+    +getColor():int
+    +isSpecial():boolean
+}
+
+class VerticalSquare {
+    #type:char
+    #VerticalSquare(type:char)
+    +touch(line:int, col:int):boolean
+    +checkAroundSquares(line:int, col:int)
+    +getColor():int
+    +isMovable():boolean
+    +isSelected():boolean
+    +isSpecial():boolean
+}
+
+class HorizontalSquare {
+    #type:char
+    #HorizontalSquare(type:char)
+    +isMovable():boolean
+    +isSelected:boolean
+    +touch(line:int, col:int):boolean
+    +checkAroundSquare(line:int, col:int)
+    +getColor():int
+    +isSpecial:boolean
+}
+
+class EmptySquare {
+    #type:char
+    #EmptySquare(type:char)
+    +touch(line:int, col:int):boolean
+    +isMovable():boolean
+    +isSelected():boolean
+    +checkAroundSquares(line:int, col:int)
+    +isSpecial():boolean
+}
+
+Square <-- SquareTile
+Square <|-- ColorSquare
+Square <|-- BombSquare
+Square <|-- VerticalSquare
+Square <|-- HorizontalSquare
+Square <|-- EmptySquare
+
+class ColorTile {
+}
+
+
+
+
+@enduml
