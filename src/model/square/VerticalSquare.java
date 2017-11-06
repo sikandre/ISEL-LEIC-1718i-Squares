@@ -17,7 +17,7 @@ public class VerticalSquare extends Square{
     public void checkAroundSquares(int line, int col){
         for (int l = 0; l < model.HEIGHT; l++) {
             Square sq = model.getSquare(l, col);
-            if(!(sq instanceof EmptySquare))
+            if(sq != null && sq.isMovable())
                 sq.selected = true;
         }
     }
