@@ -28,7 +28,7 @@ public class HorizotalSquare extends Square{
     public void checkAroundSquares(int line, int col){
         for (int c = 0; c < model.WIDTH; c++) {
             Square sq = model.getSquare(line, c);
-            if(sq!=null || sq.getColor()!=NO_COLOR)//
+            if(sq!=null && sq.isMoveble())
                 sq.selected = true;
         }
     }

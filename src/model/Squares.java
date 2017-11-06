@@ -41,7 +41,7 @@ public class Squares {
             number = num;
         }
 
-        //boolean equals(Goal g) {return square.equals(g);}
+        //boolean equals(Goal g) {return square.equals(g);} not used
     }
 
 
@@ -72,8 +72,8 @@ public class Squares {
     }
 
     public void moveSquare() {
-        for (int l = HEIGHT - 1; l > 0; l--){//leitura do array para encontar o primeiro null
-            for (int c = WIDTH - 1; c >= 0; c--) {
+        for (int l = HEIGHT - 1; l > 0; l--){
+            for (int c = WIDTH - 1; c >= 0; c--) { //leitura do array para encontar o primeiro null
                 if (grid[l][c] == null) {
                     for (int line = l-1; line >= 0; line--)
                         if (grid[line][c]!=null && grid[line][c].isMoveble()) {
@@ -107,17 +107,15 @@ public class Squares {
         return  false;
     }
 
-    public boolean updateGoalNumber(Square s){
+    public void updateGoalNumber(Square s){ //decrement as many times as called
         Goal g;
         for (int i = 0; i < getNumGoals(); ++i) {
             g = goals.get(i);
             if (g.number > 0 && s.getColor() == g.square.getColor()){
                 goals.set(i, g);
                 g.number--;
-                return true;
             }
         }
-        return false;
     }
 
 
@@ -138,7 +136,7 @@ public class Squares {
     }
 
 
-    private void specialSquareIsSelected() {
+    private void specialSquareIsSelected() { //search for special square to use touch()
         for (int l = 0; l < HEIGHT; ++l)
             for (int c = 0; c < WIDTH; ++c) {
                 Square s = grid[l][c];
@@ -153,7 +151,7 @@ public class Squares {
             for (int j = grid[i].length - 1; j >= 0; j--) {
                 Square s = grid[j][i];
                 if(s == null){
-                    grid[j][i] = Square.newInstance('.');
+                    grid[j][i] = Square.newInstance('.');//random colorsquare
                     s = grid[j][i];
                     if (listener != null)
                         listener.notifyNew(s,j,i);
