@@ -1,6 +1,10 @@
 @startuml
 
+<<<<<<< HEAD
 Squares *-- "*"Square : -grid
+=======
+Squares *-- "*" Square : -grid
+>>>>>>> 6074e2e2f4091ea525216110683ae35a3025df34
 
 class Squares {
     +{static}MAX_COLORS:int
@@ -154,15 +158,17 @@ class EmptySquare {
     +isSpecial():boolean
 }
 
+<<<<<<< HEAD
 Square <- SquareTile : square
+=======
+Square <- SquareTile
+>>>>>>> 6074e2e2f4091ea525216110683ae35a3025df34
 Square <|-- ColorSquare
 Square <|-- BombSquare
 Square <|-- VerticalSquare
 Square <|-- HorizontalSquare
 Square <|-- EmptySquare
 
-class ColorTile {
-}
 
 
 
