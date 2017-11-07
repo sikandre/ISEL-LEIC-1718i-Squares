@@ -1,6 +1,6 @@
 @startuml
 
-Squares *-- Square
+Squares *-- "*"Square : -grid
 
 class Squares {
     +{static}MAX_COLORS:int
@@ -154,7 +154,7 @@ class EmptySquare {
     +isSpecial():boolean
 }
 
-Square <-- SquareTile
+Square <- SquareTile : square
 Square <|-- ColorSquare
 Square <|-- BombSquare
 Square <|-- VerticalSquare
