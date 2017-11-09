@@ -2,6 +2,7 @@ package model.square;
 
 
 public class HorizotalSquare extends Square{
+
     protected char type;
 
     protected HorizotalSquare(char type) {
