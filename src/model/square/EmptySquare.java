@@ -2,8 +2,8 @@ package model.square;
 
 public class EmptySquare extends Square {
 
-    private char type;
-    private final boolean moveble= false;
+    protected char type;
+    private final boolean movable = false;
 
     protected EmptySquare(char type) {this.type = type;}
 
@@ -11,7 +11,7 @@ public class EmptySquare extends Square {
     public boolean touch(int line, int col) {return false;}
 
     @Override
-    public boolean isMoveble() {return moveble;}
+    public boolean isMovable() {return movable;}
 
     @Override
     public boolean isSelected() {return selected;}

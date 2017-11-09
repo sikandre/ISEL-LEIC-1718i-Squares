@@ -9,7 +9,7 @@ public class BombSquare extends Square {
     }
 
     @Override
-    public boolean isMoveble() {
+    public boolean isMovable() {
         return true;
     }
 
@@ -31,7 +31,7 @@ public class BombSquare extends Square {
         for(int x = Math.max(0, l-1); x <= Math.min(l+1, rowLimit); x++) {
             for(int y = Math.max(0, c-1); y <= Math.min(c+1, columnLimit); y++) {
                 Square sq = model.getSquare(x,y);
-                if (sq!=null && sq.isMoveble()) {
+                if (sq != null && sq.isMovable()) {
                     sq.selected = true;
                 }
             }
