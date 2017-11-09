@@ -25,7 +25,7 @@ public abstract class Square {
     }
     public Square getSquare() {return this;}
 
-    public abstract boolean isMoveble();
+    public abstract boolean isMovable();
 
     public abstract boolean isSelected();
 

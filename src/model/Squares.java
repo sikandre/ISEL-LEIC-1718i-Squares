@@ -1,7 +1,6 @@
 package model;
 
 import model.square.*;
-import view.StatusPanel;
 
 import java.util.ArrayList;
 
@@ -76,7 +75,7 @@ public class Squares {
             for (int c = WIDTH - 1; c >= 0; c--) { //leitura do array para encontar o primeiro null
                 if (grid[l][c] == null) {
                     for (int line = l-1; line >= 0; line--)
-                        if (grid[line][c]!=null && grid[line][c].isMoveble()) {
+                        if (grid[line][c]!=null && grid[line][c].isMovable()) {
                             grid[l][c] = grid[line][c];
                             grid[line][c] = null;
                             if (listener != null)
@@ -136,12 +135,12 @@ public class Squares {
     }
 
 
-    private void specialSquareIsSelected() { //search for special square to use touch()
+    private void specialSquareIsSelected() { //search for special square to use checkAroundSquares()
         for (int l = 0; l < HEIGHT; ++l)
             for (int c = 0; c < WIDTH; ++c) {
                 Square s = grid[l][c];
                 if(s.isSelected() && s.isSpecial())
-                    s.checkAroundSquares(l, c);// polimorfismo
+                    s.checkAroundSquares(l, c);// polimorfism. call diferrent square
 
             }
     }
@@ -151,7 +150,7 @@ public class Squares {
             for (int j = grid[i].length - 1; j >= 0; j--) {
                 Square s = grid[j][i];
                 if(s == null){
-                    grid[j][i] = Square.newInstance('.');//random colorsquare
+                    grid[j][i] = Square.newInstance('.');//generate random colorsquare
                     s = grid[j][i];
                     if (listener != null)
                         listener.notifyNew(s,j,i);

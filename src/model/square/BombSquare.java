@@ -28,7 +28,7 @@ public class BombSquare extends Square {
     public void checkAroundSquares(int l, int c){
         int rowLimit = Squares.HEIGHT -1;
         int columnLimit = Squares.WIDTH -1;
-        for(int x = Math.max(0, l-1); x <= Math.min(l+1, rowLimit); x++) {
+        for(int x = Math.max(0, l-1); x <= Math.min(l+1, rowLimit); x++) { //l-1 except if l-1 is -1
             for(int y = Math.max(0, c-1); y <= Math.min(c+1, columnLimit); y++) {
                 Square sq = model.getSquare(x,y);
                 if (sq != null && sq.isMovable()) {
@@ -42,6 +42,8 @@ public class BombSquare extends Square {
     public int getColor() {
         return NO_COLOR;
     }
+
+
 
     @Override
     public boolean isSpecial(){ return special=true; }

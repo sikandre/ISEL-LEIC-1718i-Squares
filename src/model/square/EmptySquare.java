@@ -5,7 +5,7 @@ public class EmptySquare extends Square {
     protected char type;
     private final boolean movable = false;
 
-    protected EmptySquare(char type) {this.type = type;}
+    protected EmptySquare(char type) {this.type = type;} //black square
 
     @Override
     public boolean touch(int line, int col) {return false;}
