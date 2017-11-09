@@ -1,5 +1,7 @@
 package model.square;
 
+import model.Squares;
+
 public class VerticalSquare extends Square{
 
     protected char type;
@@ -15,7 +17,7 @@ public class VerticalSquare extends Square{
     }
 
     public void checkAroundSquares(int line, int col){
-        for (int l = 0; l < model.HEIGHT; l++) {
+        for (int l = 0; l < Squares.HEIGHT; l++) {
             Square sq = model.getSquare(l, col);
             if(sq != null && sq.isMovable())
                 sq.selected = true;

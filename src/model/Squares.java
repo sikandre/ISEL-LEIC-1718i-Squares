@@ -80,7 +80,7 @@ public class Squares {
                             grid[line][c] = null;
                             if (listener != null)
                                 listener.notifyMove(grid[l][c],line,c,l);
-                            break;
+                            break;//break to make only one change
 
                         }
                 }
@@ -119,12 +119,12 @@ public class Squares {
 
 
     public void destroySquare(int line, int col) {
-        specialSquareIsSelected();
+        specialSquareIsSelected(); // verify if any special Square is selected to make that special move
         Square s = grid[line][col];
         for (int i = grid.length - 1; i >= 0; i--) {
             for (int j = grid[i].length - 1; j >= 0; j--) {
                 if (grid[i][j] != null && grid[i][j].isSelected()) {
-                    updateGoalNumber(grid[i][j]);
+                    updateGoalNumber(grid[i][j]); //decrement goal as many times as called
                     grid[i][j] = null;
                     if (listener != null)
                         listener.notifyDelete(s,i,j);
