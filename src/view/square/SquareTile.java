@@ -43,6 +43,7 @@ public abstract class SquareTile extends Tile {
         /*
         This method should be improved by using reflection
         */
+        //creation of all types of squares
         if (square instanceof HorizotalSquare) return new SpaceTile(square);
         if (square instanceof VerticalSquare) return new LineTile(square);
         if (square instanceof BombSquare) return new BombTile(square);
