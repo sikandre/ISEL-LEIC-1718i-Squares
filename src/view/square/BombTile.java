@@ -14,5 +14,5 @@ public class BombTile extends SquareTile {
     }
 
     @Override
-    int getColor() {return Console.GRAY;}
+    int getColor() {return Console.GRAY;}//default background color for special
 }

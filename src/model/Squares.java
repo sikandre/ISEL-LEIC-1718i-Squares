@@ -40,7 +40,7 @@ public class Squares {
             number = num;
         }
 
-        //boolean equals(Goal g) {return square.equals(g);}
+        //boolean equals(Goal g) {return square.equals(g);} not used
     }
 
 
@@ -71,8 +71,8 @@ public class Squares {
     }
 
     public void moveSquare() {
-        for (int l = HEIGHT - 1; l > 0; l--){//leitura do array para encontar o primeiro null
-            for (int c = WIDTH - 1; c >= 0; c--) {
+        for (int l = HEIGHT - 1; l > 0; l--){
+            for (int c = WIDTH - 1; c >= 0; c--) { //leitura do array para encontar o primeiro null
                 if (grid[l][c] == null) {
                     for (int line = l-1; line >= 0; line--)
                         if (grid[line][c]!=null && grid[line][c].isMovable()) {
@@ -80,7 +80,7 @@ public class Squares {
                             grid[line][c] = null;
                             if (listener != null)
                                 listener.notifyMove(grid[l][c],line,c,l);
-                            break;
+                            break;//break to make only one change
 
                         }
                 }
@@ -106,27 +106,25 @@ public class Squares {
         return  false;
     }
 
-    public boolean updateGoalNumber(Square s){
+    public void updateGoalNumber(Square s){ //decrement as many times as called
         Goal g;
         for (int i = 0; i < getNumGoals(); ++i) {
             g = goals.get(i);
             if (g.number > 0 && s.getColor() == g.square.getColor()){
                 goals.set(i, g);
                 g.number--;
-                return true;
             }
         }
-        return false;
     }
 
 
     public void destroySquare(int line, int col) {
-        specialSquareIsSelected();
+        specialSquareIsSelected(); // verify if any special Square is selected to make that special move
         Square s = grid[line][col];
         for (int i = grid.length - 1; i >= 0; i--) {
             for (int j = grid[i].length - 1; j >= 0; j--) {
                 if (grid[i][j] != null && grid[i][j].isSelected()) {
-                    updateGoalNumber(grid[i][j]);
+                    updateGoalNumber(grid[i][j]); //decrement goal as many times as called
                     grid[i][j] = null;
                     if (listener != null)
                         listener.notifyDelete(s,i,j);
@@ -137,12 +135,12 @@ public class Squares {
     }
 
 
-    private void specialSquareIsSelected() {
+    private void specialSquareIsSelected() { //search for special square to use checkAroundSquares()
         for (int l = 0; l < HEIGHT; ++l)
             for (int c = 0; c < WIDTH; ++c) {
                 Square s = grid[l][c];
                 if(s.isSelected() && s.isSpecial())
-                    s.checkAroundSquares(l, c);// polimorfismo
+                    s.checkAroundSquares(l, c);// polimorfism. call diferrent square
 
             }
     }
@@ -152,7 +150,7 @@ public class Squares {
             for (int j = grid[i].length - 1; j >= 0; j--) {
                 Square s = grid[j][i];
                 if(s == null){
-                    grid[j][i] = Square.newInstance('.');
+                    grid[j][i] = Square.newInstance('.');//generate random colorsquare
                     s = grid[j][i];
                     if (listener != null)
                         listener.notifyNew(s,j,i);

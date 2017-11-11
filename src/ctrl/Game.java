@@ -143,7 +143,7 @@ public class Game {
             if (me!=null && me.type==MouseEvent.DOWN) {
                 Position pos = view.getModelPosition(me.line, me.col); // Convert mouse position to square coordinates
                 if (pos!=null && model.touch(pos.line, pos.col)) {
-                    //TODO é aqui que vai atualizar o decremento e as contagens das peças
+                    //update totalMoves and Goals
                     status.setMoves(model.getTotalMoves());
                     for (int i = 0; i < model.getNumGoals(); i++)
                         status.setGoal( i , model.getGoal(i).number);

@@ -38,52 +38,6 @@ class Squares {
     +createNewSquare()
 }
 
-abstract class SquareTile {
-    +{static}SIDE:int
-    ~COLORS:int[]
-    #square:Square
-    #SquareTile(square:Square)
-    #getColor:int
-    +{static}newInstance(square:Square):SquareTile
-    #paintByStrings(lines...:String)
-}
-
-class ColorTile {
-    -{static}CHARS:String[]
-    +ColorTile(square:Square)
-    +paint()
-}
-
-class BombTile {
-    +BombTile(square:Square)
-    +paint()
-    ~int getColor():int
-}
-
-class VerticalTile {
-    +VerticalTile(square:Square)
-    +paint()
-    ~getColor():int
-}
-
-class HorizontalTile {
-    +HorizontalTile(square:Square)
-    +paint()
-    ~getColor():int
-}
-
-class EmptyTile {
-    +EmptyTile(Square:Square)
-    +paint()
-    ~getColor():int
-}
-
-SquareTile <|-- ColorTile
-SquareTile <|-- BombTile
-SquareTile <|-- VerticalTile
-SquareTile <|-- HorizontalTile
-SquareTile <|-- EmptyTile
-
 abstract class Square {
     +{static}NO_COLOR:int
     +{static}model:Square

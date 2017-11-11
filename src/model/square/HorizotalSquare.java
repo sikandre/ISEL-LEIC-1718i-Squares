@@ -1,7 +1,10 @@
 package model.square;
 
 
+import model.Squares;
+
 public class HorizotalSquare extends Square{
+
     protected char type;
 
     protected HorizotalSquare(char type) {
@@ -20,16 +23,15 @@ public class HorizotalSquare extends Square{
 
     @Override
     public boolean touch(int line, int col) {
-
         checkAroundSquares(line, col);
         return true;
     }
 
     public void checkAroundSquares(int line, int col){
-        for (int c = 0; c < model.WIDTH; c++) {
-            Square sq = model.getSquare(line, c);
-            if(sq != null && sq.isMovable())
-                sq.selected = true;
+        for (int c = 0; c < Squares.WIDTH; c++) {
+            Square s = model.getSquare(line, c);
+            if(s != null && s.isMovable())
+                s.selected = true;
         }
     }
 
