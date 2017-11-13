@@ -1,0 +1,41 @@
+@startuml
+
+Squares *-- "*" Square : -grid
+Squares *- "*"Squares.Goal
+
+class Squares.Goal{
+    +square:Square
+    +number:int
+    ~Goal(s:Square, num:int)
+}
+
+class Squares {
+    +{static}MAX_COLORS:int
+    +{static}MAX_GOALS:int
+    +{static}HEIGHT:int
+    +{static}WIDTH:int
+    -totalMoves:int
+    -grid:Square[][]
+    +Squares(moves:int)
+    +getSquare(l:int, c:int):Square
+    ~putSquare(cell:Square, l:int, c:int)
+    +getTotalMoves():int
+    +isOver():boolean
+    +isWinner():boolean
+    -goals:ArrayList<Goal>
+    +interface Listener
+    -listener:Listener
+    +setListener(l:Listener)
+    +getNumGoals():int
+    +getGoal(i:int):Goal
+    +addGoal(goal:Goal):boolean
+    +moveSquare()
+    +changeSquare(square:Square, line:int, c:int)
+    +touch(line:int, col:int):boolean
+    +updateGoalNumber(s:Square)
+    +destroySquare(line:int, col:int)
+    +specialSquareIsSelected()
+    +createNewSquare()
+}
+
+@enduml
