@@ -42,6 +42,10 @@ public class ColorSquare extends Square {
                 Square s = random == 1 ? new HorizotalSquare('V') : new VerticalSquare('H');
                 model.changeSquare(s, line, col);
             }
+            if (count == 4) {
+                Square s = new jokerSquare('J');
+                model.changeSquare(s,line,col);
+            }
             return true;
         }
         return false;
@@ -51,7 +55,8 @@ public class ColorSquare extends Square {
     public void checkAroundSquares(int l, int c){
         count = 0;
         checkAround(model.getSquare(l,c),l,c);
-        if (count < 2) selected = false; //unselect because its only one around
+        if (count < 2)
+            selected = false; //unselect because its only one around
     }
 
     private  void checkAround(Square square, int l,int c) {

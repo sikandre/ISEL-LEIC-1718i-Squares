@@ -19,6 +19,7 @@ public abstract class Square {
         if(type=='V') return new VerticalSquare(type);
         if(type=='B') return new BombSquare(type);
         if(type=='X') return new EmptySquare(type);
+        if(type=='J') return new jokerSquare(type);
         if(type=='.'||type>='1'&&type <= Squares.MAX_COLORS+'0')
             return new ColorSquare(type);
 

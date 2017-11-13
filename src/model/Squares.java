@@ -89,6 +89,7 @@ public class Squares {
     }
 
     public void changeSquare(Square square, int line, int col) {
+        updateGoalNumber(getSquare(line,col)); //update goal count before change
         grid[line][col]= square;
         if (listener != null)
             listener.notifyPut(square,line,col);
@@ -110,9 +111,10 @@ public class Squares {
         Goal g;
         for (int i = 0; i < getNumGoals(); ++i) {
             g = goals.get(i);
-            if (g.number > 0 && s.getColor() == g.square.getColor()){
+            if (!(s.isSpecial()) && g.number > 0 && s.getColor() == g.square.getColor()){
                 goals.set(i, g);
                 g.number--;
+
             }
         }
     }
@@ -121,13 +123,13 @@ public class Squares {
     public void destroySquare(int line, int col) {
         specialSquareIsSelected(); // verify if any special Square is selected to make that special move
         Square s = grid[line][col];
-        for (int i = grid.length - 1; i >= 0; i--) {
-            for (int j = grid[i].length - 1; j >= 0; j--) {
-                if (grid[i][j] != null && grid[i][j].isSelected()) {
-                    updateGoalNumber(grid[i][j]); //decrement goal as many times as called
-                    grid[i][j] = null;
+        for (int l = grid.length - 1; l >= 0; l--) {
+            for (int c = grid[l].length - 1; c >= 0; c--) {
+                if (grid[l][c] != null && grid[l][c].isSelected()) {
+                    updateGoalNumber(grid[l][c]); //decrement goal as many times as called
+                    grid[l][c] = null;
                     if (listener != null)
-                        listener.notifyDelete(s,i,j);
+                        listener.notifyDelete(s,l,c);
                 }
             }
         }
@@ -154,6 +156,7 @@ public class Squares {
                     s = grid[j][i];
                     if (listener != null)
                         listener.notifyNew(s,j,i);
+
                 }
             }
         }

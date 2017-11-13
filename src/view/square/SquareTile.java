@@ -49,6 +49,7 @@ public abstract class SquareTile extends Tile {
         if (square instanceof BombSquare) return new BombTile(square);
         if (square instanceof ColorSquare) return new ColorTile(square);
         if (square instanceof EmptySquare) return new EmptyTile(square);
+        if (square instanceof jokerSquare) return new jokerTile(square);
         return null;
 
     }
