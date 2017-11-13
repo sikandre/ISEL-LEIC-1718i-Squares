@@ -41,12 +41,18 @@ class EmptyTile {
     +paint()
     ~getColor():int
 }
+class JokerTile {
+     +EmptyTile(Square:Square)
+     +paint()
+     ~getColor():int
+ }
 
 SquareTile <|-- ColorTile
 SquareTile <|-- BombTile
 SquareTile <|-- VerticalTile
 SquareTile <|-- HorizontalTile
 SquareTile <|-- EmptyTile
+SquareTile <|-- JokerTile
 
 
 @enduml

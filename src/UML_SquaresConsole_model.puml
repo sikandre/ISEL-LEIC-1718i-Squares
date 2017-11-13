@@ -73,6 +73,16 @@ class EmptySquare {
     +checkAroundSquares(line:int, col:int)
     +isSpecial():boolean
 }
+class JokerSquare {
+     #type:char
+     #EmptySquare(type:char)
+     +touch(line:int, col:int):boolean
+     +getColor():int
+     +isMovable():boolean
+     +isSelected():boolean
+     +checkAroundSquares(line:int, col:int)
+     +isSpecial():boolean
+ }
 
 Square <- SquareTile : square
 
@@ -81,6 +91,7 @@ Square <|-- BombSquare
 Square <|-- VerticalSquare
 Square <|-- HorizontalSquare
 Square <|-- EmptySquare
+Square <|-- JokerSquare
 
 
 
